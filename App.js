@@ -1,10 +1,16 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, View, Image} from 'react-native';
 
 const App = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.text}>Hello World</Text>
+      <Image
+        style={styles.img}
+        source={{
+          uri: 'https://avatars1.githubusercontent.com/u/17212739',
+        }}
+      />
     </View>
   );
 };
@@ -19,5 +25,10 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 30,
+  },
+  img: {
+    width: 200,
+    height: 200,
+    borderRadius: 100 / 2,
   },
 });
