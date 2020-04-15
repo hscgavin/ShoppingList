@@ -1,15 +1,37 @@
-import React from 'react';
-import {StyleSheet, Text, View, Image} from 'react-native';
+import React, {useState} from 'react';
+import {StyleSheet, View, Text, FlatList} from 'react-native';
+import Header from './components/Header';
+import 'react-native-get-random-values';
+import {uuid} from 'uuidv4';
 
 const App = () => {
+  const [items, setItems] = useState([
+    {
+      id: uuid(),
+      text: 'Milk',
+    },
+    {
+      id: uuid(),
+      text: 'Eggs',
+    },
+    {
+      id: uuid(),
+      text: 'Fruits',
+    },
+    {
+      id: uuid(),
+      text: 'Meat',
+    },
+  ]);
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Hello World</Text>
-      <Image
-        style={styles.img}
-        source={{
-          uri: 'https://avatars1.githubusercontent.com/u/17212739',
-        }}
+      <Header />
+      <FlatList
+        data={items}
+        renderItem={({item}) => (
+          <Text style={{color: 'black'}}>{item.text}</Text>
+        )}
+        keyExtractor={(item) => item.id}
       />
     </View>
   );
@@ -20,15 +42,6 @@ export default App;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  text: {
-    fontSize: 30,
-  },
-  img: {
-    width: 200,
-    height: 200,
-    borderRadius: 100 / 2,
+    paddingTop: 60,
   },
 });
